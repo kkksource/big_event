@@ -1,19 +1,19 @@
 package com.lzp.controller;
 
+import com.lzp.pojo.Category;
 import com.lzp.pojo.Result;
-import com.lzp.utils.JwtUtil;
+import com.lzp.service.ArticleService;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
+
+    @Autowired
+    private ArticleService articleService;
 
     @GetMapping("/list")
     public Result<String> list(@RequestHeader(name = "Authorization") String token, HttpServletResponse response){
